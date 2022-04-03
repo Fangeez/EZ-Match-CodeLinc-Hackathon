@@ -1,20 +1,24 @@
 PODS:
+  - DropDown (2.3.2)
   - Koloda (5.0.1):
     - pop (~> 1.0)
   - pop (1.0.12)
 
 DEPENDENCIES:
+  - DropDown (= 2.3.2)
   - Koloda
 
 SPEC REPOS:
   trunk:
+    - DropDown
     - Koloda
     - pop
 
 SPEC CHECKSUMS:
+  DropDown: 7f87abecc28f9b4edad810fe1211c5c018c257e5
   Koloda: d07b9199a383abc5898b62aa945a599f5e7c0c4b
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
 
-PODFILE CHECKSUM: 778fdc216a61ccd82eaa1573be6500c2c5a9f354
+PODFILE CHECKSUM: 2a3bfe652e9bf4233b9acd38ce6346b035650762
 
 COCOAPODS: 1.11.3
