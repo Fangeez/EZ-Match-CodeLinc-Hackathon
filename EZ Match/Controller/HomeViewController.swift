@@ -86,8 +86,6 @@ class JobView: UIView {
     
     let startColor: UIColor = .clear
     let endColor: UIColor = UIColor(red: 0/255, green: 0/252, blue: 0/255, alpha: 0.85)
-    // UIColor(red: 173/255, green: 216/252, blue: 230/255, alpha: 0.7)
-    // UIColor(red: 128/255, green: 0.0, blue: 128/255, alpha: 0.7)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -168,7 +166,7 @@ class JobView: UIView {
         
         let headWidth = 80.0
         let hSpace = 12.0
-        let vSpace = 45.0
+        let vSpace = 80.0
         let startX = (width - ((headWidth * 3) + (hSpace * 2))) / 2.0
         
         jobTitleLabel.text = "SWE"
@@ -178,6 +176,7 @@ class JobView: UIView {
         jobTitleLabel.frame.size.width = headWidth
         jobTitleLabel.frame.size.height = 30.0
         jobTitleLabel.layer.cornerRadius = 7.5
+        jobTitleLabel.layer.masksToBounds = true
         jobTitleLabel.backgroundColor = UIColor(red: 128/255, green: 0.0, blue: 128/255, alpha: 1)
         jobTitleLabel.textColor = .white
         addSubview(jobTitleLabel)
@@ -189,6 +188,7 @@ class JobView: UIView {
         workOptionLabel.frame.size.width = headWidth
         workOptionLabel.frame.size.height = 30.0
         workOptionLabel.layer.cornerRadius = 7.5
+        workOptionLabel.layer.masksToBounds = true
         workOptionLabel.backgroundColor = UIColor(red: 128/255, green: 0.0, blue: 128/255, alpha: 1)
         workOptionLabel.textColor = .white
         addSubview(workOptionLabel)
@@ -200,6 +200,7 @@ class JobView: UIView {
         companyTypeLabel.frame.size.width = headWidth
         companyTypeLabel.frame.size.height = 30.0
         companyTypeLabel.layer.cornerRadius = 7.5
+        companyTypeLabel.layer.masksToBounds = true
         companyTypeLabel.backgroundColor = UIColor(red: 128/255, green: 0.0, blue: 128/255, alpha: 1)
         companyTypeLabel.textColor = .white
         addSubview(companyTypeLabel)
