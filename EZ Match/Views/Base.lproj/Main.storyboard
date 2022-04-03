@@ -270,10 +270,10 @@
             </objects>
             <point key="canvasLocation" x="154" y="2528"/>
         </scene>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="Cfa-Tz-amT">
             <objects>
-                <viewController id="pkh-r9-rEE" sceneMemberID="viewController">
+                <viewController id="pkh-r9-rEE" customClass="HomeViewController" customModule="EZ_Match" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V6K-Zg-H9S">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

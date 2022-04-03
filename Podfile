@@ -6,6 +6,7 @@ target 'EZ Match' do
   use_frameworks!
 
   # Pods for EZ Match
+    pod "Koloda"
 
 
 end

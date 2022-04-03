@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		14D5B630C8EB970B89AB0EFA /* Pods_EZ_Match.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEC1502FB0E7A116C1AD5A6E /* Pods_EZ_Match.framework */; };
+		83557CDC27F93B7C00A03E7E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83557CDB27F93B7C00A03E7E /* HomeViewController.swift */; };
+		83557CDF27F9460F00A03E7E /* JobRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83557CDE27F9460F00A03E7E /* JobRole.swift */; };
 		A3FA3BFC27F90A4F00BA2A67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FA3BFB27F90A4F00BA2A67 /* AppDelegate.swift */; };
 		A3FA3BFE27F90A4F00BA2A67 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FA3BFD27F90A4F00BA2A67 /* SceneDelegate.swift */; };
 		A3FA3C0027F90A4F00BA2A67 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FA3BFF27F90A4F00BA2A67 /* SignUpViewController.swift */; };
@@ -19,6 +21,8 @@
 /* Begin PBXFileReference section */
 		0CB2995F90B9B35E8C4E0519 /* Pods-EZ Match.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EZ Match.release.xcconfig"; path = "Target Support Files/Pods-EZ Match/Pods-EZ Match.release.xcconfig"; sourceTree = "<group>"; };
 		3445736E4869D630989160E9 /* Pods-EZ Match.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EZ Match.debug.xcconfig"; path = "Target Support Files/Pods-EZ Match/Pods-EZ Match.debug.xcconfig"; sourceTree = "<group>"; };
+		83557CDB27F93B7C00A03E7E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		83557CDE27F9460F00A03E7E /* JobRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobRole.swift; sourceTree = "<group>"; };
 		A3FA3BF827F90A4F00BA2A67 /* EZ Match.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EZ Match.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3FA3BFB27F90A4F00BA2A67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3FA3BFD27F90A4F00BA2A67 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +55,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		83557CDD27F945DF00A03E7E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				83557CDE27F9460F00A03E7E /* JobRole.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		A3F59A5527F916D800A2F14A /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				A3FA3BFF27F90A4F00BA2A67 /* SignUpViewController.swift */,
+				83557CDB27F93B7C00A03E7E /* HomeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -89,6 +102,7 @@
 		A3FA3BFA27F90A4F00BA2A67 /* EZ Match */ = {
 			isa = PBXGroup;
 			children = (
+				83557CDD27F945DF00A03E7E /* Models */,
 				A3F59A5827F91D9E00A2F14A /* Controller */,
 				A3F59A5527F916D800A2F14A /* Views */,
 				A3FA3BFB27F90A4F00BA2A67 /* AppDelegate.swift */,
@@ -118,6 +132,7 @@
 				A3FA3BF427F90A4F00BA2A67 /* Sources */,
 				A3FA3BF527F90A4F00BA2A67 /* Frameworks */,
 				A3FA3BF627F90A4F00BA2A67 /* Resources */,
+				D00F41E7EEA7298FBF6CD2BF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -197,6 +212,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D00F41E7EEA7298FBF6CD2BF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EZ Match/Pods-EZ Match-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EZ Match/Pods-EZ Match-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EZ Match/Pods-EZ Match-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -206,7 +238,9 @@
 			files = (
 				A3FA3C0027F90A4F00BA2A67 /* SignUpViewController.swift in Sources */,
 				A3FA3BFC27F90A4F00BA2A67 /* AppDelegate.swift in Sources */,
+				83557CDF27F9460F00A03E7E /* JobRole.swift in Sources */,
 				A3FA3BFE27F90A4F00BA2A67 /* SceneDelegate.swift in Sources */,
+				83557CDC27F93B7C00A03E7E /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
