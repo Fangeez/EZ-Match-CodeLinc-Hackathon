@@ -7,6 +7,7 @@
 
 import UIKit
 import Koloda
+import DropDown
 
 class HomeViewController: UIViewController {
     
@@ -39,7 +40,7 @@ extension HomeViewController: KolodaViewDelegate {
 
 extension HomeViewController: KolodaViewDataSource {
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
-        <#code#>
+        return UIView()
     }
     
     func kolodaNumberOfCards(_ koloda: KolodaView) -> Int {
