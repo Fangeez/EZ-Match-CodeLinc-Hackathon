@@ -7,7 +7,5 @@ target 'EZ Match' do
 
   # Pods for EZ Match
     pod "Koloda"
-    pod 'DropDown', '2.3.2'
-
 
 end
