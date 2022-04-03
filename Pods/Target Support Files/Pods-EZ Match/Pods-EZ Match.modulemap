@@ -1,0 +1,6 @@
+framework module Pods_EZ_Match {
+  umbrella header "Pods-EZ Match-umbrella.h"
+
+  export *
+  module * { export * }
+}
