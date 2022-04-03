@@ -38,24 +38,24 @@ class HomeViewController: UIViewController {
 
 }
 
-//extension HomeViewController: KolodaViewDelegate {
-//
-//}
-//
-//extension HomeViewController: KolodaViewDataSource {
-//    func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
-//        <#code#>
-//    }
-//
-//    func kolodaNumberOfCards(_ koloda: KolodaView) -> Int {
-//        return feed.count
-//    }
-//
-//    func kolodaSpeedThatCardShouldDrag(_ koloda: KolodaView) -> DragSpeed {
-//        return .moderate
-//    }
-//
-//}
+extension HomeViewController: KolodaViewDelegate {
+
+}
+
+extension HomeViewController: KolodaViewDataSource {
+    func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
+        return UIView()
+    }
+    
+    func kolodaNumberOfCards(_ koloda: KolodaView) -> Int {
+        return feed.count
+    }
+    
+    func kolodaSpeedThatCardShouldDrag(_ koloda: KolodaView) -> DragSpeed {
+        return .moderate
+    }
+
+}
 
 class JobView: UIView {
     
@@ -83,6 +83,7 @@ class JobView: UIView {
         return image
     }()
     let nameLabel = UILabel()
+    let visionLabel = UILabel()
     
     let startColor: UIColor = .clear
     let endColor: UIColor = UIColor(red: 0/255, green: 0/252, blue: 0/255, alpha: 0.85)
@@ -204,5 +205,29 @@ class JobView: UIView {
         companyTypeLabel.backgroundColor = UIColor(red: 128/255, green: 0.0, blue: 128/255, alpha: 1)
         companyTypeLabel.textColor = .white
         addSubview(companyTypeLabel)
+        
+        backgroundImageView.frame.origin.x = 0
+        backgroundImageView.frame.origin.y = vSpace
+        backgroundImageView.frame.size.width = width
+        backgroundImageView.frame.size.height = frame.size.height * 0.855
+        backgroundImageView.contentMode = .scaleAspectFill
+        addSubview(backgroundImageView)
+        
+        setupVLabel()
+    }
+    
+    func setupVLabel() {
+        let width = frame.size.width
+        let height = frame.size.height
+        
+        let hSpace = 12.0
+        visionLabel.text = "Originally founded in 2004 as Facebook, Meta’s mission is to give people the power to build and bring community together"
+        visionLabel.numberOfLines = 3
+        visionLabel.textAlignment = .center
+        visionLabel.frame.origin.x = hSpace
+        visionLabel.frame.origin.y = height + 15.0
+        visionLabel.frame.size.width = width - (hSpace * 2)
+        visionLabel.frame.size.height = 50.0
+        addSubview(visionLabel)
     }
 }
