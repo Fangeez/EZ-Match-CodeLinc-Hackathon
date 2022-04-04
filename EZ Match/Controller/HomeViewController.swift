@@ -6,45 +6,155 @@
 //
 
 import UIKit
+import Parse
 import Koloda
 
 class HomeViewController: UIViewController {
     
     private let swipeView = KolodaView()
-    private let feed = [JobRole]()
+    private var feed = [JobRole]()
+    var company = [String: PFObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        swipeView.delegate = self
-//        swipeView.dataSource = self
+        swipeView.delegate = self
+        swipeView.dataSource = self
         let width = view.frame.size.width
         let height = view.frame.size.height
-        let rect = CGRect(x: 0.0, y: 0.0, width: width, height: height * 0.8)
-        let tola = JobView(frame: rect)
-        view.addSubview(tola)
+        swipeView.frame = CGRect(x: 0.0, y: height * 0.1, width: width, height: height * 0.75)
+        view.addSubview(swipeView)
+        loginUser()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func loginUser() {
+        PFUser.logInWithUsername(inBackground:"subomi", password:"subomi") {
+          (user: PFUser?, error: Error?) -> Void in
+          if user != nil {
+              self.queryFeed()
+          } else {
+            // The login failed. Check error to see why.
+          }
+        }
     }
-    */
+    
+    func queryFeed() {
+        let user = PFUser.current()
+        let preferredSal = user!["preferredSalary"] as! Int
+        let userSkills = user!["skills"] as! [String]
+        let query = PFQuery(className:"JobRoles")
+        query.whereKey("minSalary", greaterThanOrEqualTo: preferredSal)
+        query.whereKey("skills", containedIn: userSkills)
+        query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+            if let error = error {
+                // Log details of the failure
+                print(error.localizedDescription)
+            } else if let objects = objects {
+                var data = [JobRole]()
+                var compIDS = [String]()
+                for object in objects {
+                   let role = JobRole(object: object)
+                   data.append(role)
+                   compIDS.append(role.compID)
+                }
+                self.feed = data
+                self.queryCompIDs(ids: compIDS)
+            }
+        }
+    }
+    
+    func queryCompIDs(ids: [String]) {
+        let query = PFQuery(className:"Company")
+        query.whereKey("objectId", containedIn: ids)
+        query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+            if let error = error {
+                // Log details of the failure
+                print(error.localizedDescription)
+            } else if let objects = objects {
+                for object in objects {
+                    self.company[object.objectId!] = object
+                }
+                self.swipeView.reloadData()
+            }
+        }
+    }
+    
+    func saveApplication(jobID: JobRole) {
+        let userID = PFUser.current()
+        let status = "applied"
+        let appObject = PFObject(className: "Applications")
+        appObject["user"] = userID
+        appObject["status"] = status
+        appObject["jobRole"] = jobID.itSelf
+        appObject["company"] = company[jobID.compID]
+        appObject.saveInBackground { success, error in
+            if success {
+                print("YESSIR")
+            } else {
+                print("NO")
+            }
+        }
+    }
 
 }
 
 extension HomeViewController: KolodaViewDelegate {
-
+    func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
+        let role = feed[index]
+        switch direction {
+        case .left:
+            break
+        case .right:
+            saveApplication(jobID: role)
+        case .up:
+            break
+        case .down:
+            break
+        case .topLeft:
+            break
+        case .topRight:
+            saveApplication(jobID: role)
+        case .bottomLeft:
+            break
+        case .bottomRight:
+            saveApplication(jobID: role)
+        }
+    }
+    
+    func presentController(comp: PFObject, job: JobRole) {
+        let cd = CompanyDetailsViewController(company: comp, job: job)
+        self.present(cd, animated: true, completion: nil)
+    }
 }
 
 extension HomeViewController: KolodaViewDataSource {
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
-        return UIView()
+        let role = feed[index]
+        let width = view.frame.size.width
+        let height = view.frame.size.height
+        let v =  JobView(frame: CGRect(x: 0.0, y: height * 0.1, width: width, height: height * 0.75))
+        v.jobTitleLabel.text = role.title
+        let user = PFUser.current()
+        let workOpt = user!["workOption"] as! String
+        v.workOptionLabel.text = workOpt
+        let compData = company[role.compID] as! PFObject
+        let compType = compData.object(forKey: "companyType") as! String
+        v.companyTypeLabel.text = compType
+        let name = compData.object(forKey: "name") as! String
+        v.nameLabel.text = name
+        let compImg = compData.object(forKey: "image") as! PFFileObject
+        compImg.getDataInBackground { (imageData: Data?, error: Error?) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let imageData = imageData {
+                let image = UIImage(data: imageData)
+                v.backgroundImageView.image = image
+                v.backgroundImageView.contentMode = .scaleAspectFill
+            }
+        }
+        v.layer.cornerRadius = 20
+        v.clipsToBounds = true
+        return v
     }
     
     func kolodaNumberOfCards(_ koloda: KolodaView) -> Int {
@@ -52,7 +162,13 @@ extension HomeViewController: KolodaViewDataSource {
     }
     
     func kolodaSpeedThatCardShouldDrag(_ koloda: KolodaView) -> DragSpeed {
-        return .moderate
+        return .fast
+    }
+    
+    func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
+        let role = feed[index]
+        let comp = company[role.compID]
+        presentController(comp: comp!, job: role)
     }
 
 }
@@ -84,19 +200,21 @@ class JobView: UIView {
     }()
     let nameLabel = UILabel()
     let visionLabel = UILabel()
+    var frect = CGRect()
     
-    let startColor: UIColor = .clear
+    let startColor: UIColor = .white
     let endColor: UIColor = UIColor(red: 0/255, green: 0/252, blue: 0/255, alpha: 0.85)
 
     override init(frame: CGRect) {
+        self.frect = frame
         super.init(frame: frame)
-        backgroundColor = .clear
+        backgroundColor = .white
         isOpaque = false
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        backgroundColor = .clear
+        backgroundColor = .white
         isOpaque = false
     }
 
@@ -116,12 +234,14 @@ class JobView: UIView {
                                    start: startPoint,
                                    end: endPoint,
                                    options: [])
+        
         setupUI()
     }
     
     func setupUI() {
-        let width = frame.size.width
-        let height = frame.size.height
+        let width = frect.size.width
+        let height = frect.size.height
+      
         
         let sideSpace = 15.0
         let bottomSpace = 25.0
@@ -145,7 +265,6 @@ class JobView: UIView {
         cancelImageView.layer.shadowOpacity = 0.80
         addSubview(cancelImageView)
         
-        nameLabel.text = "Meta"
         nameLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 30.0)
         nameLabel.textColor = .white
         nameLabel.sizeToFit()
@@ -163,7 +282,7 @@ class JobView: UIView {
     }
     
     func setHeadView() {
-        let width = frame.size.width
+        let width = frect.size.width
         
         let headWidth = 80.0
         let hSpace = 12.0
@@ -206,28 +325,15 @@ class JobView: UIView {
         companyTypeLabel.textColor = .white
         addSubview(companyTypeLabel)
         
-        backgroundImageView.frame.origin.x = 0
-        backgroundImageView.frame.origin.y = vSpace
+        backgroundImageView.frame.origin.x = 0.0
+        backgroundImageView.frame.origin.y = 215
         backgroundImageView.frame.size.width = width
-        backgroundImageView.frame.size.height = frame.size.height * 0.855
+        backgroundImageView.frame.size.height = 275
         backgroundImageView.contentMode = .scaleAspectFill
         addSubview(backgroundImageView)
-        
-        setupVLabel()
+     
     }
     
-    func setupVLabel() {
-        let width = frame.size.width
-        let height = frame.size.height
-        
-        let hSpace = 12.0
-        visionLabel.text = "Originally founded in 2004 as Facebook, Meta’s mission is to give people the power to build and bring community together"
-        visionLabel.numberOfLines = 3
-        visionLabel.textAlignment = .center
-        visionLabel.frame.origin.x = hSpace
-        visionLabel.frame.origin.y = height + 15.0
-        visionLabel.frame.size.width = width - (hSpace * 2)
-        visionLabel.frame.size.height = 50.0
-        addSubview(visionLabel)
-    }
 }
+
+

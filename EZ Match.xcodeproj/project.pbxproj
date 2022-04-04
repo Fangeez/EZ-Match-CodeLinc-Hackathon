@@ -10,6 +10,10 @@
 		14D5B630C8EB970B89AB0EFA /* Pods_EZ_Match.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEC1502FB0E7A116C1AD5A6E /* Pods_EZ_Match.framework */; };
 		83557CDC27F93B7C00A03E7E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83557CDB27F93B7C00A03E7E /* HomeViewController.swift */; };
 		83557CDF27F9460F00A03E7E /* JobRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83557CDE27F9460F00A03E7E /* JobRole.swift */; };
+		83557CE127F9A1A200A03E7E /* CompanyDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83557CE027F9A1A200A03E7E /* CompanyDetailsViewController.swift */; };
+		83557CE327F9B22900A03E7E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83557CE227F9B22900A03E7E /* ProfileViewController.swift */; };
+		83557CE527F9B2C400A03E7E /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83557CE427F9B2C400A03E7E /* EditProfile.swift */; };
+		A3340CBE27F9CB36009C42EE /* NotifViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3340CBD27F9CB36009C42EE /* NotifViewController.swift */; };
 		A3FA3BFC27F90A4F00BA2A67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FA3BFB27F90A4F00BA2A67 /* AppDelegate.swift */; };
 		A3FA3BFE27F90A4F00BA2A67 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FA3BFD27F90A4F00BA2A67 /* SceneDelegate.swift */; };
 		A3FA3C0027F90A4F00BA2A67 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FA3BFF27F90A4F00BA2A67 /* SignUpViewController.swift */; };
@@ -23,6 +27,10 @@
 		3445736E4869D630989160E9 /* Pods-EZ Match.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EZ Match.debug.xcconfig"; path = "Target Support Files/Pods-EZ Match/Pods-EZ Match.debug.xcconfig"; sourceTree = "<group>"; };
 		83557CDB27F93B7C00A03E7E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		83557CDE27F9460F00A03E7E /* JobRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobRole.swift; sourceTree = "<group>"; };
+		83557CE027F9A1A200A03E7E /* CompanyDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetailsViewController.swift; sourceTree = "<group>"; };
+		83557CE227F9B22900A03E7E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		83557CE427F9B2C400A03E7E /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
+		A3340CBD27F9CB36009C42EE /* NotifViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifViewController.swift; sourceTree = "<group>"; };
 		A3FA3BF827F90A4F00BA2A67 /* EZ Match.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EZ Match.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3FA3BFB27F90A4F00BA2A67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3FA3BFD27F90A4F00BA2A67 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +85,10 @@
 			children = (
 				A3FA3BFF27F90A4F00BA2A67 /* SignUpViewController.swift */,
 				83557CDB27F93B7C00A03E7E /* HomeViewController.swift */,
+				83557CE027F9A1A200A03E7E /* CompanyDetailsViewController.swift */,
+				83557CE227F9B22900A03E7E /* ProfileViewController.swift */,
+				83557CE427F9B2C400A03E7E /* EditProfile.swift */,
+				A3340CBD27F9CB36009C42EE /* NotifViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -239,8 +251,12 @@
 				A3FA3C0027F90A4F00BA2A67 /* SignUpViewController.swift in Sources */,
 				A3FA3BFC27F90A4F00BA2A67 /* AppDelegate.swift in Sources */,
 				83557CDF27F9460F00A03E7E /* JobRole.swift in Sources */,
+				A3340CBE27F9CB36009C42EE /* NotifViewController.swift in Sources */,
+				83557CE527F9B2C400A03E7E /* EditProfile.swift in Sources */,
 				A3FA3BFE27F90A4F00BA2A67 /* SceneDelegate.swift in Sources */,
+				83557CE327F9B22900A03E7E /* ProfileViewController.swift in Sources */,
 				83557CDC27F93B7C00A03E7E /* HomeViewController.swift in Sources */,
+				83557CE127F9A1A200A03E7E /* CompanyDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

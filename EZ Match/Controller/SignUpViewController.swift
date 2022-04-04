@@ -55,5 +55,4 @@ class SignUpViewController: UIViewController {
 //}
 //    @IBAction func uploadImageButtonPressed(_ sender: Any) {
 //    }
-    
 }

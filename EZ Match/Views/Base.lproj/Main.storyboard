@@ -223,10 +223,10 @@
             </objects>
             <point key="canvasLocation" x="154" y="790"/>
         </scene>
-        <!--View Controller-->
+        <!--Notif View Controller-->
         <scene sceneID="Md4-F5-4Kw">
             <objects>
-                <viewController id="3jt-De-jon" sceneMemberID="viewController">
+                <viewController id="3jt-De-jon" customClass="NotifViewController" customModule="EZ_Match" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZgB-Ui-xW7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -255,10 +255,10 @@
             </objects>
             <point key="canvasLocation" x="-1004" y="2528"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="IPE-Dm-o9c">
             <objects>
-                <viewController id="gqk-mc-m47" sceneMemberID="viewController">
+                <viewController id="gqk-mc-m47" customClass="ProfileViewController" customModule="EZ_Match" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="E1B-qJ-lHm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

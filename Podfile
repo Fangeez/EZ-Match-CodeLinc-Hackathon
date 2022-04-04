@@ -7,5 +7,6 @@ target 'EZ Match' do
 
   # Pods for EZ Match
     pod "Koloda"
+    pod 'Parse'
 
 end
